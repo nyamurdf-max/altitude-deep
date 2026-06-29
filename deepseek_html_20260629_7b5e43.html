@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Altitude — Audiophile Bar · Cuisine de Saison | Forest, Bruxelles</title>
+    <meta name="description" content="L'Altitude, bar audiophile et restaurant à Forest. Vinyles, cuisine de saison par Camille, cocktails. Réservation en ligne. 2 Avenue Molière, 1190 Bruxelles.">
+    <meta name="theme-color" content="#0f0d0b">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0f0d0b;
+            --bg-dark: #1a1612;
+            --bg-surface: #2a2420;
+            --text-cream: #f5f0eb;
+            --text-muted: #b8a99a;
+            --accent: #c8b89a;
+            --accent-soft: #a89880;
+            --overlay-strong: rgba(15, 13, 11, 0.72);
+            --overlay-medium: rgba(15, 13, 11, 0.55);
+            --overlay-light: rgba(15, 13, 11, 0.35);
+            --font-serif: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+            --font-sans: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-bounce: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --nav-height: 72px;
+            --max-width: 1280px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-cream);
+            font-family: var(--font-sans);
+            font-weight: 300;
+            line-height: 1.7;
+            overflow-x: hidden;
+            letter-spacing: 0.01em;
+            min-height: 100vh;
+        }
+
+        /* ─── SCROLLBAR ──────────────────────── */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-surface);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-soft);
+        }
+
+        /* ─── TYPOGRAPHIE GLOBALE ──────────── */
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            line-height: 1.15;
+        }
+        .serif-italic {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+        }
+        .sans-caps {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--accent);
+        }
+
+        /* ─── NAVIGATION ────────────────────── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+            background: transparent;
+        }
+        .nav.scrolled {
+            background: rgba(15, 13, 11, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+        .nav-logo {
+            height: 38px;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            flex-shrink: 0;
+        }
+        .nav.scrolled .nav-logo {
+            opacity: 0.7;
+            transform: scale(0.92);
+        }
+        .nav-logo img {
+            height: 100%;
+            width: auto;
+            display: block;
+            filter: brightness(1.05);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 400;
+        }
+        .nav-links a {
+            color: var(--text-cream);
+            position: relative;
+            padding: 0.35rem 0;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-cta {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.55rem 1.4rem;
+            border-radius: 2px;
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left var(--transition-smooth);
+            z-index: -1;
+        }
+        .nav-cta:hover {
+            color: var(--bg-deep);
+            border-color: var(--accent);
+        }
+        .nav-cta:hover::before {
+            left: 0;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 8px;
+            width: 40px;
+            height: 32px;
+            justify-content: center;
+            align-items: center;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--text-cream);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 1px;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 8, 6, 0.96);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .mobile-menu a {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--text-cream);
+            letter-spacing: 0.06em;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+        .mobile-menu .nav-cta {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            padding: 0.7rem 2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Mobile sticky CTA */
+        .mobile-sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+            z-index: 998;
+            background: var(--accent);
+            color: var(--bg-deep);
+            text-align: center;
+            padding: 0.9rem;
+            border-radius: 2px;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            transition: all var(--transition-smooth);
+        }
+        .mobile-sticky-cta:active {
+            transform: scale(0.97);
+        }
+
+        /* ─── HERO ──────────────────────────── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background-color: var(--bg-deep);
+        }
+        .hero-bg {
+            position: absolute;
+            top: -8%;
+            left: -5%;
+            width: 115%;
+            height: 120%;
+            background-image: url('https://laltitude.be/wp-content/uploads/2024/07/altitude_bar_placeholder_event_03.jpg');
+            background-size: cover;
+            background-position: center;
+            will-change: transform;
+            transition: transform 0.15s ease-out;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--overlay-medium);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 780px;
+        }
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 0.6rem;
+        }
+        .hero-title .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: wordReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes wordReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.7s 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.7s 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2.2rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+            border: none;
+            white-space: nowrap;
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-deep);
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background: #d4c5a8;
+            color: var(--bg-deep);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(200, 184, 154, 0.25);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--text-cream);
+            color: var(--text-cream);
+        }
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--text-cream);
+            transition: left var(--transition-smooth);
+            z-index: -1;
+        }
+        .btn-outline:hover {
+            color: var(--bg-deep);
+            border-color: var(--text-cream);
+        }
+        .btn-outline:hover::before {
+            left: 0;
+        }
+        .btn-accent-outline {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        .btn-accent-outline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left var(--transition-smooth);
+            z-index: -1;
+        }
+        .btn-accent-outline:hover {
+            color: var(--bg-deep);
+        }
+        .btn-accent-outline:hover::before {
+            left: 0;
+        }
+
+        /* ─── SECTIONS ──────────────────────── */
+        .section {
+            padding: 5.5rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .section-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .section-label {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.7rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            line-height: 1.2;
+        }
+        .section-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        /* Reveal */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── HORAIRES ──────────────────────── */
+        .horaires-section {
+            background: var(--bg-dark);
+        }
+        .horaires-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .horaires-image {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 1px;
+            opacity: 0.9;
+        }
+        .horaires-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .horaires-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+        }
+        .horaires-list .day {
+            color: var(--text-cream);
+            font-weight: 400;
+            min-width: 140px;
+        }
+        .horaires-list .hours {
+            color: var(--text-muted);
+            font-weight: 300;
+            text-align: right;
+        }
+        .adresse-block {
+            margin-bottom: 2rem;
+        }
+        .adresse-block p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .adresse-block .street {
+            color: var(--text-cream);
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        /* ─── GALERIE ───────────────────────── */
+        .galerie-section {
+            background: var(--bg-deep);
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .galerie-section .section-inner {
+            padding: 0 2.5rem;
+        }
+        .galerie-scroll {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x proximity;
+            padding: 1.5rem 2.5rem 2rem;
+            cursor: grab;
+            scrollbar-width: none;
+        }
+        .galerie-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .galerie-scroll:active {
+            cursor: grabbing;
+        }
+        .galerie-item {
+            flex: 0 0 auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 1px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+            position: relative;
+            cursor: pointer;
+        }
+        .galerie-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .galerie-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: background var(--transition-smooth);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .galerie-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        .galerie-item:hover img {
+            transform: scale(1.06);
+        }
+        .galerie-item:hover::after {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        /* ─── QUI SOMMES-NOUS ──────────────── */
+        .about-section {
+            background: var(--bg-dark);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .about-image {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 1px;
+            opacity: 0.92;
+        }
+        .about-signature {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-top: 1.5rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* ─── MENU ──────────────────────────── */
+        .menu-section {
+            background: var(--bg-deep);
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+        }
+        .menu-card {
+            background: var(--bg-dark);
+            padding: 2rem 1.6rem;
+            border-radius: 1px;
+            text-align: left;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 200px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .menu-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: #1e1a16;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        }
+        .menu-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: #fff;
+        }
+        .menu-card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.03em;
+            line-height: 1.5;
+        }
+        .menu-card-arrow {
+            margin-top: auto;
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--accent);
+            transition: transform 0.35s ease;
+            display: inline-block;
+        }
+        .menu-card:hover .menu-card-arrow {
+            transform: translateX(6px);
+        }
+
+        /* ─── RADIO ─────────────────────────── */
+        .radio-section {
+            background: var(--bg-dark);
+            text-align: center;
+        }
+        .radio-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.8;
+        }
+        .radio-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        /* ─── RESERVATION CTA ──────────────── */
+        .cta-section {
+            position: relative;
+            padding: 7rem 2.5rem;
+            text-align: center;
+            background: var(--bg-deep);
+            overflow: hidden;
+        }
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://laltitude.be/wp-content/uploads/2024/07/altitude_bar_placeholder_food_07.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.28;
+            z-index: 0;
+        }
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--overlay-strong);
+            z-index: 1;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .cta-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: #fff;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+        .cta-sub {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 1.2rem;
+            letter-spacing: 0.05em;
+        }
+        .cta-sub a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* ─── FOOTER ────────────────────────── */
+        .footer {
+            background: #0a0806;
+            padding: 4rem 2.5rem 2rem;
+            text-align: center;
+        }
+        .footer-logo {
+            height: 44px;
+            margin-bottom: 1.5rem;
+            filter: brightness(1.1);
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            margin-bottom: 1.5rem;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .footer-info {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-smooth);
+            color: var(--text-muted);
+        }
+        .footer-social a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(200, 184, 154, 0.06);
+        }
+        .footer-social svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        .footer-legal {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ─── CHATBOT ───────────────────────── */
+        .chatbot-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: none;
+            cursor: pointer;
+            z-index: 997;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-smooth);
+            color: var(--bg-deep);
+        }
+        .chatbot-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 36px rgba(200, 184, 154, 0.3);
+            background: #d4c5a8;
+        }
+        .chatbot-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+        .chatbot-window {
+            position: fixed;
+            bottom: 100px;
+            right: 28px;
+            width: 380px;
+            max-width: calc(100vw - 40px);
+            height: 500px;
+            max-height: calc(100vh - 140px);
+            background: var(--bg-dark);
+            border-radius: 6px;
+            z-index: 996;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .chatbot-window.open {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+        .chatbot-header {
+            background: var(--bg-surface);
+            padding: 1rem 1.3rem;
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.3rem;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.3s;
+        }
+        .chatbot-close:hover {
+            color: #fff;
+        }
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem 1.3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .chatbot-message {
+            max-width: 85%;
+            padding: 0.7rem 1rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            line-height: 1.55;
+            letter-spacing: 0.02em;
+            animation: chatIn 0.3s ease;
+        }
+        @keyframes chatIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .chatbot-message.assistant {
+            background: var(--bg-surface);
+            color: var(--text-cream);
+            align-self: flex-start;
+            border-bottom-left-radius: 1px;
+        }
+        .chatbot-message.user {
+            background: var(--accent);
+            color: var(--bg-deep);
+            align-self: flex-end;
+            border-bottom-right-radius: 1px;
+            font-weight: 500;
+        }
+        .chatbot-typing {
+            align-self: flex-start;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            padding: 0.5rem 0;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+        .chatbot-typing span {
+            width: 5px;
+            height: 5px;
+            background: var(--text-muted);
+            border-radius: 50%;
+            animation: dotPulse 1.4s infinite ease-in-out;
+        }
+        .chatbot-typing span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .chatbot-typing span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes dotPulse {
+            0%,
+            80%,
+            100% {
+                opacity: 0.2;
+                transform: scale(0.7);
+            }
+            40% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .chatbot-input-area {
+            display: flex;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0.7rem 1rem;
+            gap: 0.5rem;
+            flex-shrink: 0;
+            background: var(--bg-dark);
+        }
+        .chatbot-input {
+            flex: 1;
+            background: var(--bg-surface);
+            border: 1px solid transparent;
+            color: var(--text-cream);
+            padding: 0.65rem 1rem;
+            border-radius: 3px;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.3s;
+            letter-spacing: 0.02em;
+        }
+        .chatbot-input:focus {
+            border-color: var(--accent-soft);
+        }
+        .chatbot-send {
+            background: var(--accent);
+            border: none;
+            color: var(--bg-deep);
+            padding: 0.65rem 1.1rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: all var(--transition-smooth);
+            white-space: nowrap;
+        }
+        .chatbot-send:hover {
+            background: #d4c5a8;
+        }
+        .chatbot-send:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ─── CAL.COM FALLBACK ──────────────── */
+        .cal-fallback {
+            display: none;
+            margin-top: 1.5rem;
+        }
+        .cal-fallback form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        .cal-fallback input,
+        .cal-fallback textarea {
+            background: var(--bg-surface);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-cream);
+            padding: 0.75rem 1rem;
+            border-radius: 2px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s;
+            resize: vertical;
+        }
+        .cal-fallback input:focus,
+        .cal-fallback textarea:focus {
+            border-color: var(--accent);
+        }
+        .cal-fallback button {
+            background: var(--accent);
+            color: var(--bg-deep);
+            border: none;
+            padding: 0.85rem;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all var(--transition-smooth);
+            font-size: 0.85rem;
+        }
+        .cal-fallback button:hover {
+            background: #d4c5a8;
+        }
+
+        /* ─── RESPONSIVE ────────────────────── */
+        @media (max-width: 1024px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .horaires-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .horaires-image {
+                height: 300px;
+                order: -1;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .about-image {
+                height: 350px;
+                order: -1;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.7rem;
+            }
+            .nav {
+                padding: 0 1.5rem;
+            }
+            .section {
+                padding: 4rem 1.5rem;
+            }
+            .galerie-scroll {
+                padding: 1rem 1.5rem 1.5rem;
+            }
+            .galerie-section .section-inner {
+                padding: 0 1.5rem;
+            }
+            .chatbot-window {
+                width: calc(100vw - 32px);
+                right: 16px;
+                bottom: 90px;
+                height: 450px;
+            }
+            .chatbot-btn {
+                bottom: 20px;
+                right: 16px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .mobile-sticky-cta {
+                display: block;
+            }
+            .nav {
+                padding: 0 1.25rem;
+                height: 60px;
+            }
+            .nav-logo {
+                height: 30px;
+            }
+            .menu-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.7rem;
+            }
+            .menu-card {
+                padding: 1.4rem 1.1rem;
+                min-height: 160px;
+                gap: 0.4rem;
+            }
+            .menu-card-title {
+                font-size: 1.1rem;
+            }
+            .menu-card-subtitle {
+                font-size: 0.75rem;
+            }
+            .galerie-item {
+                width: 150px;
+                height: 150px;
+            }
+            .hero {
+                min-height: 100vh;
+                min-height: 100svh;
+            }
+            .hero-title {
+                font-size: clamp(1.8rem, 8vw, 2.6rem);
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.7rem;
+            }
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 0.75rem 1.5rem;
+                font-size: 0.75rem;
+            }
+            .section {
+                padding: 3rem 1.25rem;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            .section-text {
+                font-size: 0.9rem;
+            }
+            .horaires-list li {
+                font-size: 0.85rem;
+            }
+            .horaires-list .day {
+                min-width: 110px;
+            }
+            .chatbot-window {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                max-height: 100vh;
+                max-height: 100svh;
+                border-radius: 0;
+                bottom: auto;
+                right: auto;
+                z-index: 1005;
+            }
+            .chatbot-window.open {
+                border-radius: 0;
+            }
+            .chatbot-btn {
+                z-index: 1006;
+                bottom: 80px;
+                right: 14px;
+            }
+            .mobile-sticky-cta {
+                bottom: 14px;
+                left: 12px;
+                right: 12px;
+                font-size: 0.78rem;
+                padding: 0.8rem;
+                z-index: 1004;
+            }
+            .cta-section {
+                padding: 4rem 1.25rem;
+            }
+            .footer {
+                padding: 3rem 1.25rem 1.5rem;
+            }
+            .footer-links {
+                gap: 1rem;
+                font-size: 0.7rem;
+            }
+            .galerie-scroll {
+                gap: 0.4rem;
+                padding: 0.8rem 1.25rem 1.2rem;
+            }
+            .galerie-section .section-inner {
+                padding: 0 1.25rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            .menu-card {
+                min-height: auto;
+                padding: 1.2rem 1rem;
+                flex-direction: row;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .menu-card-arrow {
+                margin-top: 0;
+                margin-left: auto;
+            }
+            .galerie-item {
+                width: 130px;
+                height: 130px;
+            }
+            .hero {
+                min-height: 100svh;
+            }
+            .nav {
+                padding: 0 1rem;
+            }
+            .hamburger {
+                width: 34px;
+                height: 28px;
+            }
+            .hamburger span {
+                width: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── NAVIGATION ──────────────────────── -->
+    <nav class="nav" id="mainNav">
+        <a href="#hero" class="nav-logo" aria-label="L'Altitude — Accueil">
+            <img src="https://laltitude.be/wp-content/uploads/2024/06/picto_laltitude_menu-1.svg" alt="L'Altitude logo" loading="eager">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#menu-section">Menu</a></li>
+            <li><a href="#radio-section">Radio</a></li>
+            <li><a href="https://laltitude.be/event/" target="_blank" rel="noopener">Privatisation</a></li>
+            <li><a href="#reservation-cta" class="nav-cta">Réserver</a></li>
+        </ul>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#menu-section">Menu</a>
+        <a href="#radio-section">Radio</a>
+        <a href="https://laltitude.be/event/" target="_blank" rel="noopener">Privatisation</a>
+        <a href="#reservation-cta" class="nav-cta">Réserver</a>
+    </div>
+
+    <!-- Mobile Sticky CTA -->
+    <a href="#reservation-cta" class="mobile-sticky-cta" id="mobileStickyCta">Réserver une table</a>
+
+    <!-- ─── HERO ────────────────────────────── -->
+    <section class="hero" id="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title" id="heroTitle">Audiophile Bar · Cuisine de Saison</h1>
+            <p class="hero-subtitle">Vinyles, assiettes & cocktails — 2 Avenue Molière, Forest</p>
+            <div class="hero-buttons">
+                <a href="#reservation-cta" class="btn btn-primary">Réserver une table</a>
+                <a href="#menu-section" class="btn btn-outline">Voir le menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── HORAIRES & RÉSERVATION ──────────── -->
+    <section class="section horaires-section reveal-section" id="horaires">
+        <div class="section-inner">
+            <span class="section-label">Venir</span>
+            <h2 class="section-title">Horaires & Réservation</h2>
+            <div class="horaires-grid">
+                <div>
+                    <div class="adresse-block">
+                        <p class="street">2 Avenue Molière</p>
+                        <p>1190 Forest, Bruxelles</p>
+                        <p style="margin-top:0.3rem;">info@laltitude.be</p>
+                    </div>
+                    <ul class="horaires-list">
+                        <li><span class="day">Lundi – Mardi</span><span class="hours">16h30 – 23h00</span></li>
+                        <li><span class="day">Mercredi – Jeudi</span><span class="hours">08h30 – 23h30</span></li>
+                        <li><span class="day">Vendredi – Samedi</span><span class="hours">08h30 – 23h30</span></li>
+                        <li><span class="day">Dimanche</span><span class="hours">10h30 – 16h00</span></li>
+                    </ul>
+                    <div style="margin-top:1.5rem;">
+                        <a href="#reservation-cta" class="btn btn-accent-outline">Choisir une date</a>
+                    </div>
+                </div>
+                <img
+                src="https://laltitude.be/wp-content/uploads/2024/06/altitude_bar_inside_view_soundsystem_table_design_section_informations.jpg"
+                alt="Intérieur de L'Altitude — soundsystem et tables"
+                class="horaires-image"
+                loading="lazy"
+                >
+            </div>
+            <!-- Cal.com embed -->
+            <div id="cal-booking-embed" style="margin-top:2rem; min-height:400px;"></div>
+            <!-- Fallback -->
+            <div class="cal-fallback" id="calFallback">
+                <p style="color:var(--text-muted);text-align:center;margin-bottom:1rem;">Réservation par email</p>
+                <form action="mailto:info@laltitude.be" method="post" enctype="text/plain">
+                    <input type="text" name="Nom" placeholder="Nom" required>
+                    <input type="text" name="Prénom" placeholder="Prénom" required>
+                    <input type="date" name="Date" required>
+                    <input type="time" name="Heure" required>
+                    <input type="number" name="Personnes" placeholder="Nombre de personnes" min="1" max="20" required>
+                    <input type="email" name="Email" placeholder="Email" required>
+                    <textarea name="Message" rows="3" placeholder="Message (optionnel)"></textarea>
+                    <button type="submit">Envoyer la demande</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── GALERIE AMBIANCE ────────────────── -->
+    <section class="section galerie-section reveal-section" id="galerie">
+        <div class="section-inner">
+            <span class="section-label">Ambiance</span>
+            <h2 class="section-title">L'Atmosphère</h2>
+        </div>
+        <div class="galerie-scroll" id="galerieScroll">
+            <div class="galerie-item"><img src="https://laltitude.be/wp-content/uploads/2024/07/altitude_bar_details_soundsystem_design_gallery.jpg" alt="Soundsystem L'Altitude" loading="lazy"></div>
+            <div class="galerie-item"><img src="https://laltitude.be/wp-content/uploads/2024/07/altitude_bar_details_platine_design_gallery.jpg" alt="Platine vinyle L'Altitude" loading="lazy"></div>
+            <div class="galerie-item"><img src="https://laltitude.be/wp-content/uploads/2024/07/altitude_bar_details_marbre_design_gallery.jpg" alt="Détail marbre L'Altitude" loading="lazy"></div>
+            <div class="galerie-item"><img src="https://laltitude.be/wp-content/uploads/2024/07/altitude_bar_details_flowers_design_gallery.jpg" alt="Fleurs L'Altitude" loading="lazy"></div>
+            <div class="galerie-item"><img src="https://laltitude.be/wp-content/uploads/2024/07/altitude_bar_placeholder_event_01.jpg" alt="Événement L'Altitude" loading="lazy"></div>
+            <div class="galerie-item"><img src="https://laltitude.be/wp-content/uploads/2024/07/altitude_bar_placeholder_event_02.jpg" alt="Ambiance L'Altitude" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- ─── QUI SOMMES-NOUS ─────────────────── -->
+    <section class="section about-section reveal-section" id="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div>
+                    <span class="section-label">Qui sommes-nous</span>
+                    <h2 class="section-title">La rencontre</h2>
+                    <p class="section-text">
+                        L'Altitude, c'est la rencontre de Thomas, passionné de vinyles et de son authentique, et de Camille, chef créative qui sublime les produits de saison. Un bar où la musique tourne sur platine et où la cuisine surprend à chaque bouchée, dans un cadre chaleureux pensé pour les sens.
+                    </p>
+                    <p class="about-signature">Thomas & Camille</p>
+                </div>
+                <img
+                src="https://laltitude.be/wp-content/uploads/2024/07/altitude_restaurant_mamakis_camille_presentation-squarre.jpg"
+                alt="Camille et Thomas — fondateurs de L'Altitude"
+                class="about-image"
+                loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── LE MENU ─────────────────────────── -->
+    <section class="section menu-section reveal-section" id="menu-section">
+        <div class="section-inner">
+            <span class="section-label">Carte</span>
+            <h2 class="section-title">Nos Menus</h2>
+            <div class="menu-grid">
+                <a href="https://laltitude.be/menu/" target="_blank" rel="noopener" class="menu-card">
+                    <span class="menu-card-title">Déjeuner</span>
+                    <span class="menu-card-subtitle">Lun–Ven · 11h30–14h30<br>Formules fraîches & de saison</span>
+                    <span class="menu-card-arrow">→</span>
+                </a>
+                <a href="https://laltitude.be/menu/" target="_blank" rel="noopener" class="menu-card">
+                    <span class="menu-card-title">Soir</span>
+                    <span class="menu-card-subtitle">Lun–Sam · 18h30–22h00<br>Plats créatifs & accords vins</span>
+                    <span class="menu-card-arrow">→</span>
+                </a>
+                <a href="https://laltitude.be/menu/" target="_blank" rel="noopener" class="menu-card">
+                    <span class="menu-card-title">Brunch</span>
+                    <span class="menu-card-subtitle">Sam–Dim · 11h00–15h00<br>Douceurs salées & sucrées</span>
+                    <span class="menu-card-arrow">→</span>
+                </a>
+                <a href="https://laltitude.be/menu/" target="_blank" rel="noopener" class="menu-card">
+                    <span class="menu-card-title">Boissons</span>
+                    <span class="menu-card-subtitle">Cocktails, vins nature, bières<br>Carte complète au bar</span>
+                    <span class="menu-card-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── LA RADIO ────────────────────────── -->
+    <section class="section radio-section reveal-section" id="radio-section">
+        <div class="section-inner" style="max-width:600px;">
+            <span class="section-label">Écouter</span>
+            <div class="radio-icon">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="30" r="26"/>
+                    <circle cx="30" cy="30" r="14" stroke-dasharray="4 3"/>
+                    <circle cx="30" cy="30" r="4" fill="currentColor" stroke="none"/>
+                    <line x1="30" y1="4" x2="30" y2="14" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h2 class="section-title">La Radio de L'Altitude</h2>
+            <p class="section-text" style="margin:0 auto 2rem;">
+                Musique soigneusement sélectionnée par Thomas, disponible 24h/24. Une programmation éclectique qui fait vibrer le bar, accessible partout.
+            </p>
+            <a href="https://radio.laltitude.be/" target="_blank" rel="noopener" class="btn btn-accent-outline">Écouter la radio</a>
+        </div>
+    </section>
+
+    <!-- ─── RÉSERVATION CTA ─────────────────── -->
+    <section class="cta-section reveal-section" id="reservation-cta">
+        <div class="cta-bg"></div>
+        <div class="cta-overlay"></div>
+        <div class="cta-content">
+            <h2 class="cta-title">Prêt à vivre l'expérience ?</h2>
+            <a href="#horaires" class="btn btn-primary" style="font-size:0.9rem;padding:1rem 3rem;">Réserver une table</a>
+            <p class="cta-sub">
+                Événement privé ou privatisation ? <a href="https://laltitude.be/event/" target="_blank" rel="noopener">Contactez-nous</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ──────────────────────────── -->
+    <footer class="footer">
+        <img src="https://laltitude.be/wp-content/uploads/2024/06/logo_laltitude_full_white.svg" alt="L'Altitude" class="footer-logo" loading="lazy">
+        <ul class="footer-links">
+            <li><a href="mailto:info@laltitude.be">Contact</a></li>
+            <li><a href="https://radio.laltitude.be/" target="_blank" rel="noopener">Radio</a></li>
+            <li><a href="https://instagram.com/laltitudebaraudiophile" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://soundcloud.com/" target="_blank" rel="noopener">SoundCloud</a></li>
+        </ul>
+        <p class="footer-info">
+            2 Avenue Molière, 1190 Forest, Bruxelles<br>
+            info@laltitude.be
+        </p>
+        <div class="footer-social">
+            <a href="https://instagram.com/laltitudebaraudiophile" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://soundcloud.com/" target="_blank" rel="noopener" aria-label="SoundCloud">
+                <svg viewBox="0 0 24 24"><path d="M1 17v-3c0-2 1.5-3.5 3-3.5s3 1.5 3 3.5v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 17v-5c0-2.5 2-4.5 4-4.5s4 2 4 4.5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15 17v-7c0-3 2.5-5.5 5-5.5s5 2.5 5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </a>
+        </div>
+        <p class="footer-legal">© 2025 L'Altitude · Tous droits réservés</p>
+    </footer>
+
+    <!-- ─── CHATBOT ─────────────────────────── -->
+    <button class="chatbot-btn" id="chatbotBtn" aria-label="Ouvrir le chat">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <span>L'Altitude · Assistant</span>
+            <button class="chatbot-close" id="chatbotClose" aria-label="Fermer">×</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-message assistant">
+                Bonjour 👋 Je suis l'assistant de L'Altitude. Je peux vous renseigner sur nos horaires, menus, réservations et bien plus. Comment puis-je vous aider ?
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Votre message..." aria-label="Message">
+            <button class="chatbot-send" id="chatbotSend">Envoyer</button>
+        </div>
+    </div>
+
+    <!-- ─── SCRIPTS ─────────────────────────── -->
+    <script>
+        (function() {
+            // ─── NAV SCROLL ────────────────────────
+            const nav = document.getElementById('mainNav');
+            const mobileStickyCta = document.getElementById('mobileStickyCta');
+            let lastScrollY = 0;
+
+            function updateNav() {
+                const scrollY = window.scrollY;
+                if (scrollY > 60) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                // Hide mobile sticky CTA when near footer
+                const footer = document.querySelector('.footer');
+                if (footer && mobileStickyCta) {
+                    const footerTop = footer.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    if (footerTop < windowHeight + 100) {
+                        mobileStickyCta.style.opacity = '0';
+                        mobileStickyCta.style.pointerEvents = 'none';
+                    } else {
+                        mobileStickyCta.style.opacity = '1';
+                        mobileStickyCta.style.pointerEvents = 'auto';
+                    }
+                }
+                lastScrollY = scrollY;
+            }
+            window.addEventListener('scroll', updateNav, { passive: true });
+            updateNav();
+
+            // ─── MOBILE MENU ───────────────────────
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            let menuOpen = false;
+
+            function toggleMenu() {
+                menuOpen = !menuOpen;
+                hamburgerBtn.classList.toggle('active', menuOpen);
+                mobileMenu.classList.toggle('active', menuOpen);
+                document.body.style.overflow = menuOpen ? 'hidden' : '';
+            }
+            hamburgerBtn.addEventListener('click', toggleMenu);
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (menuOpen) toggleMenu();
+                });
+            });
+
+            // ─── HERO PARALLAXE ────────────────────
+            const heroBg = document.getElementById('heroBg');
+            let targetX = 0,
+                targetY = 0;
+            let currentX = 0,
+                currentY = 0;
+            const maxMove = 18;
+
+            function lerp(a, b, t) {
+                return a + (b - a) * t;
+            }
+
+            function updateParallax() {
+                currentX = lerp(currentX, targetX, 0.08);
+                currentY = lerp(currentY, targetY, 0.08);
+                if (heroBg) {
+                    heroBg.style.transform = `translate(${currentX}px, ${currentY}px)`;
+                }
+                requestAnimationFrame(updateParallax);
+            }
+
+            document.addEventListener('mousemove', function(e) {
+                const cx = window.innerWidth / 2;
+                const cy = window.innerHeight / 2;
+                targetX = ((e.clientX - cx) / cx) * maxMove;
+                targetY = ((e.clientY - cy) / cy) * maxMove;
+            }, { passive: true });
+
+            // Gyroscope fallback for mobile
+            if (window.DeviceOrientationEvent && 'ontouchstart' in window) {
+                window.addEventListener('deviceorientation', function(e) {
+                    if (e.gamma !== null && e.beta !== null) {
+                        targetX = Math.max(-maxMove, Math.min(maxMove, (e.gamma / 30) * maxMove));
+                        targetY = Math.max(-maxMove, Math.min(maxMove, ((e.beta - 45) / 30) * maxMove));
+                    }
+                }, { passive: true });
+            }
+            requestAnimationFrame(updateParallax);
+
+            // ─── HERO TEXT STAGGER ──────────────────
+            const heroTitle = document.getElementById('heroTitle');
+            if (heroTitle) {
+                const text = heroTitle.textContent.trim();
+                const words = text.split(' ');
+                heroTitle.innerHTML = words.map((word, i) =>
+                    `<span class="word" style="animation-delay:${i * 0.06}s">${word}</span>`
+                ).join(' ');
+            }
+
+            // ─── SCROLL REVEAL ──────────────────────
+            const revealSections = document.querySelectorAll('.reveal-section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -60px 0px',
+                threshold: 0.12
+            };
+            const revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            revealSections.forEach(section => revealObserver.observe(section));
+
+            // ─── SMOOTH ANCHOR SCROLL ──────────────
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        const navHeight = document.getElementById('mainNav').offsetHeight;
+                        const targetPos = target.getBoundingClientRect().top + window.scrollY -
+                            navHeight - 10;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // ─── GALERIE DRAG SCROLL ────────────────
+            const galerieScroll = document.getElementById('galerieScroll');
+            if (galerieScroll) {
+                let isDown = false,
+                    startX, scrollLeft;
+                galerieScroll.addEventListener('mousedown', function(e) {
+                    isDown = true;
+                    galerieScroll.style.cursor = 'grabbing';
+                    startX = e.pageX - galerieScroll.offsetLeft;
+                    scrollLeft = galerieScroll.scrollLeft;
+                });
+                galerieScroll.addEventListener('mouseleave', function() {
+                    isDown = false;
+                    galerieScroll.style.cursor = 'grab';
+                });
+                galerieScroll.addEventListener('mouseup', function() {
+                    isDown = false;
+                    galerieScroll.style.cursor = 'grab';
+                });
+                galerieScroll.addEventListener('mousemove', function(e) {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - galerieScroll.offsetLeft;
+                    const walk = (x - startX) * 1.6;
+                    galerieScroll.scrollLeft = scrollLeft - walk;
+                });
+            }
+
+            // ─── CAL.COM INTEGRATION ────────────────
+            const calEmbed = document.getElementById('cal-booking-embed');
+            const calFallback = document.getElementById('calFallback');
+            let calLoaded = false;
+
+            function loadCalScript() {
+                (function(C, A, L) {
+                    let p = function(a, ar) { a.q.push(ar); };
+                    let d = C.document;
+                    C.Cal = C.Cal || function() {
+                        let cal = C.Cal;
+                        let ar = arguments;
+                        if (!cal.loaded) {
+                            cal.ns = {};
+                            cal.q = cal.q || [];
+                            d.head.appendChild(d.createElement("script")).src = A;
+                            cal.loaded = true;
+                        }
+                        if (ar[0] === L) {
+                            const api = function() { p(api, arguments); };
+                            const namespace = ar[1];
+                            api.q = api.q || [];
+                            typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) :
+                                p(cal, ar);
+                            return;
+                        }
+                        p(cal, ar);
+                    };
+                })(window, "https://app.cal.com/embed/embed.js", "init");
+                Cal("init", { origin: "https://cal.com" });
+                Cal("inline", {
+                    elementOrSelector: "#cal-booking-embed",
+                    calLink: "laltitude/reservation",
+                    layout: "month_view"
+                });
+                Cal("ui", { "theme": "dark", "hideEventTypeDetails": false });
+            }
+
+            if (calEmbed) {
+                loadCalScript();
+                // Fallback after 5 seconds if Cal.com doesn't render
+                setTimeout(function() {
+                    if (calEmbed && calEmbed.children.length === 0 && calFallback) {
+                        calFallback.style.display = 'block';
+                        calEmbed.style.display = 'none';
+                    }
+                }, 5000);
+            }
+
+            // ─── CHATBOT ────────────────────────────
+            const chatbotBtn = document.getElementById('chatbotBtn');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotClose = document.getElementById('chatbotClose');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotSend = document.getElementById('chatbotSend');
+            let chatOpen = false;
+            const ANTHROPIC_API_KEY = 'ANTHROPIC_API_KEY_ICI'; // ← Remplacez par votre clé API
+
+            function openChat() {
+                chatOpen = true;
+                chatbotWindow.classList.add('open');
+                chatbotBtn.style.opacity = '0';
+                chatbotBtn.style.pointerEvents = 'none';
+                if (window.innerWidth <= 768) {
+                    document.body.style.overflow = 'hidden';
+                }
+                setTimeout(() => chatbotInput.focus(), 400);
+            }
+
+            function closeChat() {
+                chatOpen = false;
+                chatbotWindow.classList.remove('open');
+                chatbotBtn.style.opacity = '1';
+                chatbotBtn.style.pointerEvents = 'auto';
+                document.body.style.overflow = '';
+            }
+
+            chatbotBtn.addEventListener('click', openChat);
+            chatbotClose.addEventListener('click', closeChat);
+
+            function addMessage(text, role) {
+                const msgDiv = document.createElement('div');
+                msgDiv.classList.add('chatbot-message', role);
+                msgDiv.textContent = text;
+                chatbotMessages.appendChild(msgDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                return msgDiv;
+            }
+
+            function addTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.classList.add('chatbot-typing');
+                typingDiv.id = 'typingIndicator';
+                typingDiv.innerHTML = '<span></span><span></span><span></span>';
+                chatbotMessages.appendChild(typingDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                return typingDiv;
+            }
+
+            function removeTypingIndicator() {
+                const indicator = document.getElementById('typingIndicator');
+                if (indicator) indicator.remove();
+            }
+
+            async function sendToAnthropic(userMessage) {
+                const typing = addTypingIndicator();
+                try {
+                    const response = await fetch("https://api.anthropic.com/v1/messages", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "x-api-key": ANTHROPIC_API_KEY,
+                            "anthropic-version": "2023-06-01"
+                        },
+                        body: JSON.stringify({
+                            model: "claude-haiku-4-5-20251001",
+                            max_tokens: 500,
+                            system: `Tu es l'assistant de L'Altitude, un bar audiophile et restaurant à Forest, Bruxelles.
+Adresse : 2 Avenue Molière, 1190 Forest. Email : info@laltitude.be.
+Horaires : Lun-Mar 16h30-23h, Mer-Jeu 8h30-23h30, Ven-Sam 8h30-23h30, Dim 10h30-16h.
+Réservation : https://cal.com/laltitude/reservation
+Menus : déjeuner (lun-ven 11h30-14h30), soir (lun-sam 18h30-22h), brunch (sam-dim 11h-15h).
+Radio : https://radio.laltitude.be/
+Instagram : @laltitudebaraudiophile
+Fondateurs : Thomas (vinyles) et Camille (cuisine).
+
+MODE PRISE EN MAIN URGENTE : Si quelqu'un demande une disponibilité pour aujourd'hui ou demain, propose immédiatement d'appeler le restaurant ou de réserver via le lien. Recommande des plats selon les horaires (brunch le week-end, déjeuner en semaine).
+
+Réponds toujours en français, de façon chaleureuse et concise (max 3 phrases). Si tu ne sais pas, dis de contacter info@laltitude.be.`,
+                            messages: [{ role: "user", content: userMessage }]
+                        })
+                    });
+                    removeTypingIndicator();
+                    if (!response.ok) {
+                        throw new Error('API error: ' + response.status);
+                    }
+                    const data = await response.json();
+                    const assistantText = data.content && data.content[0] ? data.content[0].text :
+                        "Désolé, je n'ai pas pu traiter votre demande. Contactez-nous à info@laltitude.be.";
+                    addMessage(assistantText, 'assistant');
+                } catch (error) {
+                    removeTypingIndicator();
+                    console.error('Chatbot error:', error);
+                    addMessage(
+                        "Je suis momentanément indisponible. N'hésitez pas à nous écrire à info@laltitude.be ou à appeler le restaurant. Nous serons ravis de vous aider !",
+                        'assistant');
+                }
+            }
+
+            function handleSend() {
+                const message = chatbotInput.value.trim();
+                if (!message) return;
+                addMessage(message, 'user');
+                chatbotInput.value = '';
+                chatbotSend.disabled = true;
+                chatbotInput.disabled = true;
+                sendToAnthropic(message).finally(() => {
+                    chatbotSend.disabled = false;
+                    chatbotInput.disabled = false;
+                    chatbotInput.focus();
+                });
+            }
+
+            chatbotSend.addEventListener('click', handleSend);
+            chatbotInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleSend();
+                }
+            });
+
+            // ─── INIT ───────────────────────────────
+            // Close mobile menu on resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && menuOpen) {
+                    toggleMenu();
+                }
+                if (window.innerWidth > 768 && chatOpen) {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Initial trigger for visible sections
+            setTimeout(() => {
+                revealSections.forEach(s => {
+                    const rect = s.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        s.classList.add('visible');
+                        revealObserver.unobserve(s);
+                    }
+                });
+            }, 300);
+
+            console.log('L\'Altitude — site prêt. 🎵');
+        })();
+    </script>
+</body>
+</html>
